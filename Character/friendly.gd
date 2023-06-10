@@ -12,6 +12,8 @@ func _ready():
 
 func spawn_panda():
 	$Pandas.add_child(panda[i].instantiate())
-	i += 1
+	if (i < 2):
+		i += 1
+	
 func _on_timer_timeout():
 	spawn_panda()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Bamboo Enemy/Bamboo.gd" id="1_wrjdu"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wcl76"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0yfr"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_wrjdu")
@@ -11,4 +11,4 @@ script = ExtResource("1_wrjdu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(24.2, 22.2)
-texture = SubResource("PlaceholderTexture2D_wcl76")
+texture = SubResource("PlaceholderTexture2D_b0yfr")

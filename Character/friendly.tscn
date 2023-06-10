@@ -1,14 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://da6qxqkpptqhw"]
 
 [ext_resource type="Script" path="res://Character/friendly.gd" id="1_iros2"]
-[ext_resource type="PackedScene" uid="uid://cv54o024g40la" path="res://Character/Character.tscn" id="1_kxngm"]
+[ext_resource type="PackedScene" uid="uid://dp1b0ufsfh8gi" path="res://Character/Character.tscn" id="1_kxngm"]
 
 [node name="Friendly" type="Node2D"]
 script = ExtResource("1_iros2")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_kxngm")]
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="Timer" type="Timer" parent="."]
 
