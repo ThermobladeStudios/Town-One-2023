@@ -19,7 +19,7 @@ func _ready():
 func spawn_panda():
 	var pandy = panda[i].instantiate()
 	$Panda.add_child(pandy)
-	pandy.position = $Player.position
+	pandy.position = Vector2(randi_range(58,565), randi_range(40,303))
 	print(pandy)
 	
 
@@ -37,11 +37,11 @@ func _on_spawn_timer_timeout():
 	if (mob_count < MAX_MOBS):
 		mob_count += 1
 		var enemy = enemy_1.instantiate()
-		
-		enemy.position = Vector2(randf_range(-300,700), randf_range(-300,450))
 	
-		while enemy.position.x < 500 and enemy.position.x > -150 or enemy.position.y < 350 and enemy.position.y > -200:
-			enemy.position = Vector2(randf_range(-300,700), randf_range(-300,450))
+		enemy.position = Vector2(randi_range(58,565), randi_range(40,303))
+		print(enemy.position)	
+		#while enemy.position.x < 500 and enemy.position.x > -150 or enemy.position.y < 350 and enemy.position.y > -200:
+			#enemy.position = Vector2(randf_range(-300,700), randf_range(-300,450))
 		
 		add_child(enemy)
 		
