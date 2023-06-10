@@ -7,8 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_th8df"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_grdkg")
-speed = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, 4.76837e-07)

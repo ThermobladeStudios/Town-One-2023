@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5kxw5reyb4x1"]
+[gd_scene load_steps=4 format=3 uid="uid://c5kxw5reyb4x1"]
 
 [ext_resource type="Script" path="res://Bamboo Enemy/Bamboo.gd" id="1_wrjdu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0c86x"]
+radius = 5.0
+height = 24.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0yfr"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_wrjdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0c86x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(24.2, 22.2)
+scale = Vector2(9.55, 22.2)
 texture = SubResource("PlaceholderTexture2D_b0yfr")

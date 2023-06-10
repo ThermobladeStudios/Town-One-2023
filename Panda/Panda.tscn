@@ -7,7 +7,11 @@
 size = Vector2(10, 10)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+<<<<<<< HEAD
 script = ExtResource("1_vkvqh")
+=======
+motion_mode = 1
+>>>>>>> 012992f6a45a80a49e37c4fe3d4107959c50734e
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, -4.76837e-07)
