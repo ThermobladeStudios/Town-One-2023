@@ -7,7 +7,7 @@ size = Vector2(10, 22)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0yfr"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="BambooBody" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_wrjdu")
 

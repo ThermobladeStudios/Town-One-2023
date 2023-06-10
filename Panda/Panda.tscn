@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v214u"]
 size = Vector2(28, 24.5)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="PandaBody" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_vkvqh")
 
