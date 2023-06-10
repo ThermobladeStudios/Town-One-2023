@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc171dk12rd71"]
+[gd_scene load_steps=5 format=3 uid="uid://cc171dk12rd71"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_ahsee"]
-[ext_resource type="PackedScene" uid="uid://cv54o024g40la" path="res://Character/Character.tscn" id="1_bsm3k"]
+[ext_resource type="PackedScene" uid="uid://dp1b0ufsfh8gi" path="res://Character/Character.tscn" id="1_bsm3k"]
 [ext_resource type="PackedScene" uid="uid://jlxg0vl58ewg" path="res://Panda/Panda.tscn" id="3_gu5xy"]
+[ext_resource type="PackedScene" uid="uid://b4jlw47qbtm7h" path="res://Rooms/Rooms.tscn" id="4_24aw1"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ahsee")
@@ -15,7 +16,15 @@ speed = 200
 wait_time = 0.5
 autostart = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_gu5xy")]
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Panda" type="Node" parent="."]
+
+[node name="CharacterBody2D" parent="Panda" instance=ExtResource("3_gu5xy")]
 position = Vector2(234, 144)
 
+[node name="Room" parent="." instance=ExtResource("4_24aw1")]
+position = Vector2(-8, -8)
+
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
