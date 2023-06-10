@@ -1,0 +1,12 @@
+{
+	"Panda": {
+		"Health": "100",
+		"Attack": "100",
+		"Description": "Blob"
+	},
+	"Bamboo": {
+		"Health": "100",
+		"Attack": "100",
+		"Description": "I don't know what I'm doing"
+	}
+}

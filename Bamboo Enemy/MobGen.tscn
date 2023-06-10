@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6cv584qws4x6"]
+
+[ext_resource type="Script" path="res://Bamboo Enemy/MobGen.gd" id="1_c00wx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p8j3e"]
+
+[node name="Spawn" type="Node2D"]
+script = ExtResource("1_c00wx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(72.5, 65.5)
+texture = SubResource("PlaceholderTexture2D_p8j3e")
