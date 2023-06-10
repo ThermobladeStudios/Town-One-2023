@@ -1,73 +1,61 @@
-[gd_scene load_steps=7 format=3 uid="uid://ni4bfq4mtfwr"]
+[gd_scene load_steps=5 format=3 uid="uid://qqjj6ce4jjgo"]
 
-[ext_resource type="Script" path="res://Rooms/Rooms.gd" id="1_3wwat"]
-[ext_resource type="Script" path="res://Rooms/Dice.gd" id="2_xdjys"]
-
-[sub_resource type="TileSet" id="TileSet_ksy43"]
+[sub_resource type="TileSet" id="TileSet_hfrx3"]
 tile_size = Vector2i(8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_re762"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f21di"]
 size = Vector2(300, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mpll"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua3em"]
 size = Vector2(8, 144)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8fwy5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vycda"]
 radius = 25.0
 
-[node name="Room" type="Node2D"]
-script = ExtResource("1_3wwat")
-
-[node name="Dice" type="Label" parent="."]
-offset_left = 77.0
-offset_top = 74.0
-offset_right = 242.0
-offset_bottom = 100.0
-text = "dasdasdadsadasdsad"
-script = ExtResource("2_xdjys")
+[node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_ksy43")
+tile_set = SubResource("TileSet_hfrx3")
 format = 2
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
 position = Vector2(160, 14)
-shape = SubResource("RectangleShape2D_re762")
+shape = SubResource("RectangleShape2D_f21di")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 position = Vector2(306, 90)
-shape = SubResource("RectangleShape2D_1mpll")
+shape = SubResource("RectangleShape2D_ua3em")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
 position = Vector2(160, 166)
-shape = SubResource("RectangleShape2D_re762")
+shape = SubResource("RectangleShape2D_f21di")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
 position = Vector2(14, 90)
-shape = SubResource("RectangleShape2D_1mpll")
+shape = SubResource("RectangleShape2D_ua3em")
 
 [node name="Door1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door1"]
 position = Vector2(160, 18)
-shape = SubResource("CircleShape2D_8fwy5")
+shape = SubResource("CircleShape2D_vycda")
 
 [node name="Door2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door2"]
 position = Vector2(302, 90)
-shape = SubResource("CircleShape2D_8fwy5")
+shape = SubResource("CircleShape2D_vycda")
 
 [node name="Door3" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door3"]
 position = Vector2(160, 162)
-shape = SubResource("CircleShape2D_8fwy5")
+shape = SubResource("CircleShape2D_vycda")
 
 [node name="Door4" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door4"]
 position = Vector2(18, 90)
-shape = SubResource("CircleShape2D_8fwy5")
+shape = SubResource("CircleShape2D_vycda")
