@@ -7,15 +7,10 @@ size = Vector2(23, 22)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0yfr"]
 
-<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0c3ns"]
 size = Vector2(24, 22)
 
 [node name="CharacterBody2D2" type="CharacterBody2D"]
-=======
-[node name="BambooBody" type="CharacterBody2D"]
-motion_mode = 1
->>>>>>> 557288ccc51ca75a09af2970f04169958ca189b2
 script = ExtResource("1_wrjdu")
 SPEED = null
 DMG = null

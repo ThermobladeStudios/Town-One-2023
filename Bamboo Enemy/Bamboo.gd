@@ -1,14 +1,12 @@
 extends CharacterBody2D
 
-<<<<<<< HEAD
+
 @export var SPEED = 100
 @export var DMG = 20
 @export var HEALTH = 100
 var DEAD = false
 var ATTACKING = false
-=======
-@export var SPEED = 598
->>>>>>> 557288ccc51ca75a09af2970f04169958ca189b2
+
 @onready var player = get_parent().get_node("Player")
 @onready var bambooType = "Bamboo"
 
