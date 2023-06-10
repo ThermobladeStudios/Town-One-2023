@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc171dk12rd71"]
+
+[ext_resource type="PackedScene" uid="uid://dp1b0ufsfh8gi" path="res://Character/Character.tscn" id="1_bsm3k"]
+[ext_resource type="PackedScene" uid="uid://c5kxw5reyb4x1" path="res://Bamboo Enemy/Bamboo.tscn" id="2_g1b4f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bamboo" parent="." instance=ExtResource("2_g1b4f")]
+position = Vector2(157, 81)
+
+[node name="Player" parent="." instance=ExtResource("1_bsm3k")]
+position = Vector2(23, 58)
