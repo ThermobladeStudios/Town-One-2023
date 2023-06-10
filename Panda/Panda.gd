@@ -44,23 +44,31 @@ func find_closest_bamboo():
 @export var attack_range = 50
 @onready var attack_area = $Area2D
 var target_bamboo = null
+var pandaType = "HighBodyFatPercentagePanda"
 
 func _ready():
 	attack_area.connect("body_entered", Callable(self, "_on_Bamboo_entered"))
 	attack_area.connect("body_exited", Callable(self, "_on_Bamboo_exited"))
 
 func _on_Bamboo_entered(body):
-	if body.get_name() == "Bamboo":
-		target_bamboo = body
-		start_combat()
+	print(body.name)
+	
+	
+	
+	if body.name == "BambooBody":
+		target_bamboo = body.get_Type()
+		start_combat(target_bamboo)
 
 func _on_Bamboo_exited(body):
 	if body == target_bamboo:
 		target_bamboo = null
 		stop_combat()
 
-func start_combat():
+func start_combat(monster: String):
 	print("Starting combat")
+	var attack = JsonData.CharacterData["pandaType"]["Attack"]
+	
+	
 #	show_attack()
 
 func stop_combat():

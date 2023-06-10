@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
-@export var SPEED = 100
+@export var SPEED = 598
 @onready var player = get_parent().get_node("Player")
+@onready var bambooType = "Bamboo"
+
+func get_Type():
+	return bambooType
 
 func _physics_process(delta):
 	var player_position = player.position
