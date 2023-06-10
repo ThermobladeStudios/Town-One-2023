@@ -15,5 +15,5 @@ script = ExtResource("1_wrjdu")
 shape = SubResource("CapsuleShape2D_0c86x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(9.1, 22.2)
+scale = Vector2(9.55, 22.2)
 texture = SubResource("PlaceholderTexture2D_b0yfr")
