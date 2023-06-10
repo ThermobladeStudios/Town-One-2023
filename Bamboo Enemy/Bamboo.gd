@@ -18,7 +18,7 @@ func _physics_process(delta):
 		pass
 		#Deactive this bamboo
 	elif ATTACKING and not DEAD:
-		startCombat()
+		_startCombat()
 	else:
 		findPlayer()
 
