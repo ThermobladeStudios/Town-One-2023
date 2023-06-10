@@ -1,16 +1,9 @@
 extends CharacterBody2D
 
-@onready var panda = []
-@onready var allpandas = preload("res://Panda/Panda.tscn")
-@export var speed = 100
-var i = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _ready():
-	for x in 3:
-		panda.append(allpandas)
-		$Timer.start(5)
-	
+@export var speed = 100
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -19,13 +12,4 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-
-
-func spawn_panda():
-	print("Spawn Panda")
-	$Panda.add_child(panda[i].instantiate())
-	if (i < 2):
-		i += 1
-	
-func _on_timer_timeout():
-	spawn_panda()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
