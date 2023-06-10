@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @export var SPEED = 100
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_parent().get_parent().get_node("Player")
 @onready var player_radius = 150
 var target = null
 
+
 func _physics_process(delta):
-	print(player)
+	
 	var player_position = player.position
 	var distance_to_player = position.distance_to(player_position)
 	
@@ -49,8 +50,6 @@ func _ready():
 	attack_area.connect("body_exited", Callable(self, "_on_Bamboo_exited"))
 
 func _on_Bamboo_entered(body):
-	print("Bamboo body entered")
-	print(body.get_name())
 	if body.get_name() == "Bamboo":
 		target_bamboo = body
 		start_combat()

@@ -3,15 +3,34 @@ extends Node2D
 var enemy_1 = preload("res://Bamboo Enemy/Bamboo.tscn")
 var MAX_MOBS = 5
 var mob_count = 0
+@onready var panda = []
+@onready var allpandas = preload("res://Panda/Panda.tscn")
 
-# Called when the node enters the scene tree for the first time.
+var i = 0
+
 func _ready():
-	pass # Replace with function body.
+	$"Spawn Timer".start(0.5)
+	for x in 3:
+		panda.append(allpandas)
+		
+	
+	$Timer.start(5)
+
+func spawn_panda():
+	var pandy = panda[i].instantiate()
+	$Panda.add_child(pandy)
+	pandy.position = $Player.position
+	print(pandy)
+	
+
+	
+func _on_timer_timeout():
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	if(i < 2):
+		spawn_panda()
+	if (i < 2):
+		i += 1
 
 
 func _on_spawn_timer_timeout():
