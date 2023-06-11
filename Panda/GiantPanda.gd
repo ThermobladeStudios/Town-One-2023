@@ -129,4 +129,5 @@ func _on_area_2d_body_exited(body):
 
 func _on_attack_timer_timeout():
 	state = 1
+
 	$attack_timer.stop()

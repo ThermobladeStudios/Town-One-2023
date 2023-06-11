@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5kxw5reyb4x1"]
+[gd_scene load_steps=6 format=3 uid="uid://c5kxw5reyb4x1"]
 
 [ext_resource type="Script" path="res://Bamboo Enemy/Bamboo.gd" id="1_wrjdu"]
+[ext_resource type="Texture2D" uid="uid://cnmfmdkw4onbv" path="res://Assets/Bamboo1.png" id="2_awur3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tfrv"]
-size = Vector2(10, 22)
+size = Vector2(24, 31)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0yfr"]
+[sub_resource type="Theme" id="Theme_jnu50"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48l41"]
 bg_color = Color(0.560784, 0.917647, 0.247059, 1)
@@ -21,17 +22,20 @@ motion_mode = 1
 script = ExtResource("1_wrjdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_0tfrv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.04308e-07, 0.0499993)
-scale = Vector2(10, 22.1)
-texture = SubResource("PlaceholderTexture2D_b0yfr")
+texture = ExtResource("2_awur3")
+hframes = 4
+vframes = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -15.0
-offset_top = 14.0
+offset_top = 17.0
 offset_right = 15.0
-offset_bottom = 18.0
+offset_bottom = 21.0
+theme = SubResource("Theme_jnu50")
 theme_override_styles/fill = SubResource("StyleBoxFlat_48l41")
 show_percentage = false

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 100
+@export var SPEED = 120
 @export var DMG = 20
 @export var HEALTH = 100
 var DEAD = false
@@ -14,19 +14,17 @@ var RNG = RandomNumberGenerator.new()
 
 func get_Type():
 	return bambooType
+	
 func _ready():
 	$ProgressBar.max_value = HEALTH
+	
 func _process(delta):
 	$ProgressBar.value = HEALTH
+	
 func _physics_process(delta):
-	if DEAD:
-		pass
-		#Deactive this bamboo
-	elif ATTACKING and not DEAD:
-		#Execute when the bamboo first reaches the player, and then every 1.5 seconds after.
-		_startCombat()
-	else:
-		findPlayer()
+	findPlayer()
+
+
 
 func findPlayer():
 	var player_position = player.position
@@ -36,10 +34,7 @@ func findPlayer():
 
 func takeDamage(damage):
 	HEALTH -= damage
-	print("%s took %sdmg" % [self.name, damage])
-	print(HEALTH)
 	if HEALTH <= 0:
-		print("You died")
 		DEAD = true
 		world.mob_count -= 1
 		if world.mob_count == 0:
@@ -48,14 +43,5 @@ func takeDamage(damage):
 			world.MAX_MOBS = RNG.randi_range(3, 10)
 		self.queue_free()
 
-func _on_area_2d_body_entered(body):
-	if body.get_name() == "Player":
-		ATTACKING = true
-
-func _on_area_2d_body_exited(body):
-	if body.get_name() == "Player":
-		ATTACKING = false
 		
-func _startCombat():
-	pass
 
