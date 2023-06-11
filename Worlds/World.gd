@@ -1,14 +1,18 @@
 extends Node2D
 
 var enemy_1 = preload("res://Bamboo Enemy/Bamboo.tscn")
-var MAX_MOBS = 5
+var RNG = RandomNumberGenerator.new()
+var MAX_MOBS = RNG.randi_range(3, 10)
 var mob_count = 0
 var max_reached = false
+var wave = 1
 @onready var panda = []
 @onready var allpandas = preload("res://Panda/Panda.tscn")
 
 var i = 0
-
+func _process(delta):
+	$Wave_count.text ="Wave: "+ str(wave)
+	$Current_max_mobs.text = "Mobs this wave: " + str(MAX_MOBS)
 func _ready():
 	$"Spawn Timer".start(0.5)
 	for x in 3:

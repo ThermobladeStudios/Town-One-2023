@@ -80,6 +80,12 @@ offset_right = 396.0
 offset_bottom = -6.0
 script = ExtResource("3_2ii7b")
 
+[node name="Wave COunt" type="Label" parent="Control/Node2D"]
+offset_left = 512.0
+offset_top = 285.0
+offset_right = 552.0
+offset_bottom = 308.0
+
 [connection signal="pressed" from="Control/Node2D/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Node2D/Button" to="Control/Node2D/Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="Control/Node2D/Description" to="Control/Node2D/Description" method="_on_mouse_entered"]
