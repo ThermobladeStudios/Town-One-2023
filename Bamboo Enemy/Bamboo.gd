@@ -32,8 +32,11 @@ func findPlayer():
 func takeDamage(damage):
 	HEALTH -= damage
 	print("%s took %sdmg" % [self.name, damage])
+	print(HEALTH)
 	if HEALTH <= 0:
+		print("YOu fucking died")
 		DEAD = true
+		self.queue_free()
 
 func _on_area_2d_body_entered(body):
 	if body.get_name() == "Player":

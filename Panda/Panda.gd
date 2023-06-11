@@ -59,11 +59,9 @@ func start_combat(monster):
 	print("Starting combat")
 	var attack = JsonData.CharacterData[pandaType]["Attack"]
 	print(attack)
-	print("checkpoint2")
 	$TimerH.wait_time = JsonData.CharacterData[pandaType]["CoolDown"]
 	monster.takeDamage(attack)
 	
-	print("attack")
 	
 #	show_attack()
 
@@ -98,10 +96,8 @@ func show_attack():
 
 func _on_area_2d_body_entered(body):
 	print(body.name)
-	print("checkpoint1")
 	
 	if "BambooBody" in body.name:
-		print("Entered if")
 		target_bamboo = body.get_Type()
 		start_combat(body)
 
