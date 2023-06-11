@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4sp86lce8fst"]
+[gd_scene load_steps=4 format=3 uid="uid://b4sp86lce8fst"]
 
+[ext_resource type="Script" path="res://Rooms/Rooms.gd" id="1_28826"]
 [ext_resource type="TileSet" uid="uid://doqgyp07up1xt" path="res://Assets/TileMap/TileMap.tres" id="1_a4fci"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qeio"]
+radius = 34.57
+
 [node name="Room2" type="Node2D"]
+script = ExtResource("1_28826")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_a4fci")
@@ -15,3 +20,31 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
+
+[node name="Door1" type="Area2D" parent="."]
+position = Vector2(272, 286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1"]
+position = Vector2(320, 48)
+shape = SubResource("CircleShape2D_1qeio")
+
+[node name="Door2" type="Area2D" parent="."]
+position = Vector2(58, -52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2"]
+position = Vector2(574, 180)
+shape = SubResource("CircleShape2D_1qeio")
+
+[node name="Door3" type="Area2D" parent="."]
+position = Vector2(34, 59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door3"]
+position = Vector2(320, 312)
+shape = SubResource("CircleShape2D_1qeio")
+
+[node name="Door4" type="Area2D" parent="."]
+position = Vector2(-56, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door4"]
+position = Vector2(66, 180)
+shape = SubResource("CircleShape2D_1qeio")
