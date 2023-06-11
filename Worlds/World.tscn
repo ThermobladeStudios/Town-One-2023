@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_ahsee"]
 [ext_resource type="PackedScene" uid="uid://cv54o024g40la" path="res://Character/Character.tscn" id="1_bsm3k"]
-[ext_resource type="PackedScene" uid="uid://b4jlw47qbtm7h" path="res://Rooms/Rooms.tscn" id="4_24aw1"]
+[ext_resource type="PackedScene" uid="uid://b4sp86lce8fst" path="res://Rooms/Room2.tscn" id="4_5qtb4"]
 [ext_resource type="PackedScene" uid="uid://jlxg0vl58ewg" path="res://Panda/Panda.tscn" id="5_acb4y"]
 [ext_resource type="AudioStream" uid="uid://bbu2b1i72h3yl" path="res://Assets/Bamboo_Bytes_pt_2.mp3" id="5_l8c7a"]
 
@@ -24,7 +24,7 @@ autostart = true
 [node name="PandaBody" parent="Panda" instance=ExtResource("5_acb4y")]
 position = Vector2(204, 178)
 
-[node name="Room" parent="." instance=ExtResource("4_24aw1")]
+[node name="Room2" parent="." instance=ExtResource("4_5qtb4")]
 
 [node name="Wave_count" type="Label" parent="."]
 offset_left = 506.0
