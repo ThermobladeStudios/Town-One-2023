@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Rooms/Rooms.gd" id="1_3wwat"]
 [ext_resource type="Script" path="res://Rooms/Dice.gd" id="2_xdjys"]
-[ext_resource type="Texture2D" path="res://Assets/TileMap/Tiles2.png" id="3_5mglk"]
+[ext_resource type="Texture2D" uid="uid://dnykuar4e02iw" path="res://Assets/TileMap/Tiles2.png" id="3_5mglk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk16g"]
 texture = ExtResource("3_5mglk")
@@ -1005,10 +1005,10 @@ tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_uk16g")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_re762"]
-size = Vector2(540, 16)
+size = Vector2(640, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mpll"]
-size = Vector2(16, 264)
+size = Vector2(32, 284)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fwy5"]
 radius = 25.0
@@ -1038,25 +1038,25 @@ visibility_layer = 1023
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
 light_mask = 1023
 visibility_layer = 1023
-position = Vector2(320, 40)
+position = Vector2(320, 16)
 shape = SubResource("RectangleShape2D_re762")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
 light_mask = 1023
 visibility_layer = 1023
-position = Vector2(320, 320)
+position = Vector2(320, 340)
 shape = SubResource("RectangleShape2D_re762")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 light_mask = 1023
 visibility_layer = 1023
-position = Vector2(582, 180)
+position = Vector2(624, 178)
 shape = SubResource("RectangleShape2D_1mpll")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
 light_mask = 1023
 visibility_layer = 1023
-position = Vector2(58, 180)
+position = Vector2(16, 178)
 shape = SubResource("RectangleShape2D_1mpll")
 
 [node name="Door1" type="Area2D" parent="."]
