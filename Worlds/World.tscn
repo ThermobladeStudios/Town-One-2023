@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b4jlw47qbtm7h" path="res://Rooms/Rooms.tscn" id="4_24aw1"]
 [ext_resource type="PackedScene" uid="uid://jlxg0vl58ewg" path="res://Panda/Panda.tscn" id="5_acb4y"]
 [ext_resource type="AudioStream" uid="uid://bbu2b1i72h3yl" path="res://Assets/Bamboo_Bytes_pt_2.mp3" id="5_l8c7a"]
-[ext_resource type="PackedScene" uid="uid://dqel1h2eambyf" path="res://User Interface/In-Game-Interface.tscn" id="6_rrmuu"]
+[ext_resource type="PackedScene" path="res://User Interface/In-Game-Interface.tscn" id="6_rrmuu"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ahsee")

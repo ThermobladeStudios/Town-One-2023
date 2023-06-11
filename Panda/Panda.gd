@@ -36,7 +36,7 @@ func _physics_process(delta):
 		move_and_slide()
 	if(colliding and !attackOnCd):
 		attackOnCd = true
-		$attack_timer.start(0.6)
+		$attack_timer.start(0.7)
 		state = 2
 		start_combat(target_bamboo)
 		pass
