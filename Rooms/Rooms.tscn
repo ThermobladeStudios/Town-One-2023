@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ni4bfq4mtfwr"]
+[gd_scene load_steps=7 format=3 uid="uid://b4jlw47qbtm7h"]
 
 [ext_resource type="Script" path="res://Rooms/Rooms.gd" id="1_3wwat"]
 [ext_resource type="Script" path="res://Rooms/Dice.gd" id="2_xdjys"]
@@ -31,20 +31,30 @@ tile_set = SubResource("TileSet_ksy43")
 format = 2
 
 [node name="Walls" type="StaticBody2D" parent="."]
+light_mask = 1023
+visibility_layer = 1023
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(320, 40)
 shape = SubResource("RectangleShape2D_re762")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(320, 320)
 shape = SubResource("RectangleShape2D_re762")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(582, 180)
 shape = SubResource("RectangleShape2D_1mpll")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(58, 180)
 shape = SubResource("RectangleShape2D_1mpll")
 
