@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs27yo6m38l3c"]
+
+[sub_resource type="GDScript" id="GDScript_kqg7x"]
+script/source = "extends Button
+
+@onready var progressBar = get_parent().get_node(\"ProgressBar\")
+@onready var description = get_parent().get_node(\"Description\")
+
+func _ready():
+	progressBar.visible = false
+	connect(\"button_pressed\", Callable(self, \"_on_button_pressed\"))
+	progressBar.value = 100
+	text = \"Start Game!\"
+
+func showProgress():
+	visible = true
+
+
+func _on_pressed():
+	
+	progressBar.visible = true
+	description.visible = false
+	hide()
+#	$Control/ProgressBar.visible = true
+
+
+"
+
+[node name="Start Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 75.0
+offset_right = 187.0
+offset_bottom = 105.0
+script = SubResource("GDScript_kqg7x")
+
+[node name="Control" type="Control" parent="Button"]
+anchors_preset = 0
+offset_left = 141.0
+offset_top = 98.0
+offset_right = 181.0
+offset_bottom = 138.0
