@@ -1,33 +1,157 @@
-[gd_scene load_steps=5 format=3 uid="uid://p2yg5c7o5145"]
+[gd_scene load_steps=22 format=3 uid="uid://p2yg5c7o5145"]
 
 [ext_resource type="Script" path="res://User Interface/Interface.gd" id="1_2urpe"]
 [ext_resource type="Script" path="res://User Interface/Screen.gd" id="2_wdfjx"]
+[ext_resource type="Texture2D" uid="uid://c6o24n5ttbu6l" path="res://Assets/GiantPanda.png" id="3_0awho"]
 [ext_resource type="Script" path="res://User Interface/Game Description.gd" id="3_2ii7b"]
+[ext_resource type="Texture2D" uid="uid://285i6wsn2gjt" path="res://User Interface/bambooBubble Background Removed.png" id="4_7f5xp"]
+[ext_resource type="Script" path="res://User Interface/Freeplay.gd" id="4_8qum4"]
+[ext_resource type="Texture2D" uid="uid://bvovs1vo0e7vy" path="res://User Interface/bamboos.png" id="5_dlyui"]
+[ext_resource type="Script" path="res://User Interface/Farmer.gd" id="7_a6uha"]
+[ext_resource type="Texture2D" uid="uid://bf8eg705eb2k5" path="res://User Interface/bubble Background Removed.png" id="8_6pibi"]
+[ext_resource type="Texture2D" uid="uid://cef0g6y3gjrcd" path="res://Assets/Farmer.png" id="8_s5fuu"]
+[ext_resource type="Texture2D" uid="uid://bk7eb300owuq4" path="res://User Interface/newBubble Background Removed.png" id="10_bbjpv"]
+[ext_resource type="Texture2D" uid="uid://c2m1yoxu4x32d" path="res://User Interface/banner Background Removed.png" id="12_d4lj1"]
+[ext_resource type="Texture2D" uid="uid://cod0h8ay7dtet" path="res://User Interface/text-1686520611928.png" id="13_1ag3u"]
+[ext_resource type="FontFile" uid="uid://c7f04q08h6ilu" path="res://User Interface/KR Bamboo.ttf" id="14_vok77"]
 
 [sub_resource type="GDScript" id="GDScript_kqg7x"]
 script/source = "extends Button
 
-@onready var progressBar = get_parent().get_node(\"ProgressBar\")
+@onready var bubble = get_parent().get_node(\"Chat_Bubble\")
+@onready var banner = get_parent().get_node(\"Title_Banner\")
+@onready var title = get_parent().get_node(\"Label\")
+@onready var description_label = get_parent().get_node(\"Description_Label\")
+@onready var farmer = get_parent().get_node(\"Character\")
+@onready var freeplay = get_parent().get_node(\"Freeplay\")
 @onready var description = get_parent().get_node(\"Description\")
+@onready var background = get_parent().get_node(\"Start_background\")
 
 func _ready():
-	progressBar.visible = false
+	
 	connect(\"button_pressed\", Callable(self, \"_on_button_pressed\"))
-	progressBar.value = 100
-	text = \"Start Game!\"
+
+	text = \"STORY MODE\"
 
 func showProgress():
 	visible = true
 
 
 func _on_pressed():
-	progressBar.visible = true
+	bubble.visible = false
+	banner.visible = false
+	title.visible = false
+	description_label.visible = false
+	farmer.visible = false
+	freeplay.visible = false
 	description.visible = false
+	background.visible = false
 	hide()
 #	$Control/ProgressBar.visible = true
 
 
+func _on_mouse_entered():
+	var animator = $First_Panda/AnimationPlayer
+	animator.play(\"Attack\")
+
+
+func _on_mouse_exited():
+	var animator = $First_Panda/AnimationPlayer
+	animator.stop()
+
 "
+
+[sub_resource type="Animation" id="Animation_e2u6q"]
+resource_name = "Attack"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ijfvt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_jg53r"]
+resource_name = "Walk_Down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_bdww6"]
+resource_name = "Walk_Left"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_gss23"]
+resource_name = "Walk_Right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6vmm"]
+_data = {
+"Attack": SubResource("Animation_e2u6q"),
+"RESET": SubResource("Animation_ijfvt"),
+"Walk_Down": SubResource("Animation_jg53r"),
+"Walk_Left": SubResource("Animation_bdww6"),
+"Walk_Right": SubResource("Animation_gss23")
+}
 
 [node name="Game Screen" type="Control"]
 layout_mode = 3
@@ -50,35 +174,49 @@ offset_bottom = 84.0
 [node name="Node2D" type="Node2D" parent="Control"]
 script = ExtResource("2_wdfjx")
 
-[node name="Label" type="Label" parent="Control/Node2D"]
-offset_left = 107.0
-offset_top = 15.0
-offset_right = 392.0
-offset_bottom = 775.0
-theme_override_font_sizes/font_size = 15
-text = "We all know that Pandas love bamboos, though what if one day a radioactive waste turned the bamboos evil? These bamboos began their savage raid on the human race, and gained vengeance for our harm to the world. Now in the world only a panda trainer remains. Help seek its panda friends through defeating waves of hungry bamboo mobs and navigate through puzzled rooms before it’s too late… "
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="Control/Node2D"]
-offset_left = 148.0
-offset_top = 69.0
-offset_right = 348.0
-offset_bottom = 204.0
+[node name="Story" type="Button" parent="Control/Node2D"]
+z_index = -2
+offset_left = 233.0
+offset_top = 154.0
+offset_right = 391.0
+offset_bottom = 304.0
 script = SubResource("GDScript_kqg7x")
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/Node2D"]
-offset_left = -53.0
-offset_top = 281.0
-offset_right = 19.0
-offset_bottom = 311.0
+[node name="First_Panda" type="Node2D" parent="Control/Node2D/Story"]
 
-[node name="Description" type="Button" parent="Control/Node2D"]
-offset_left = 101.0
-offset_top = -39.0
-offset_right = 396.0
-offset_bottom = -6.0
-script = ExtResource("3_2ii7b")
+[node name="Sprite2D" type="Sprite2D" parent="Control/Node2D/Story/First_Panda"]
+z_index = 4
+position = Vector2(81, 45)
+scale = Vector2(4.5, 3.8125)
+texture = ExtResource("3_0awho")
+hframes = 6
+vframes = 4
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Node2D/Story/First_Panda"]
+libraries = {
+"": SubResource("AnimationLibrary_e6vmm")
+}
+
+[node name="Story_Label" type="Label" parent="Control/Node2D/Story"]
+z_index = 5
+layout_mode = 0
+offset_left = 2.0
+offset_top = 117.0
+offset_right = 163.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.929412, 0.929412, 0.929412, 1)
+theme_override_fonts/font = ExtResource("14_vok77")
+theme_override_font_sizes/font_size = 18
+text = "STORY MODE"
+horizontal_alignment = 1
+
+[node name="Bamboo_Label" type="Sprite2D" parent="Control/Node2D/Story"]
+z_index = 3
+position = Vector2(86, 128)
+scale = Vector2(0.437166, 0.361111)
+texture = ExtResource("4_7f5xp")
 
 [node name="Wave COunt" type="Label" parent="Control/Node2D"]
 offset_left = 512.0
@@ -86,7 +224,142 @@ offset_top = 285.0
 offset_right = 552.0
 offset_bottom = 308.0
 
-[connection signal="pressed" from="Control/Node2D/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Control/Node2D/Button" to="Control/Node2D/Button" method="_on_pressed"]
+[node name="Freeplay" type="Button" parent="Control/Node2D"]
+z_index = -3
+offset_left = 14.0
+offset_top = 165.0
+offset_right = 178.0
+offset_bottom = 306.0
+script = ExtResource("4_8qum4")
+
+[node name="Panda_Button" type="Node2D" parent="Control/Node2D/Freeplay"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Node2D/Freeplay/Panda_Button"]
+z_index = 4
+position = Vector2(80, 36)
+scale = Vector2(4.5, 3.8125)
+texture = ExtResource("3_0awho")
+hframes = 6
+vframes = 4
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Node2D/Freeplay/Panda_Button"]
+libraries = {
+"": SubResource("AnimationLibrary_e6vmm")
+}
+
+[node name="Freeplay_Label" type="Label" parent="Control/Node2D/Freeplay"]
+z_index = 5
+layout_mode = 0
+offset_left = 12.0
+offset_top = 107.0
+offset_right = 151.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.8232, 0.83216, 0.84, 1)
+theme_override_fonts/font = ExtResource("14_vok77")
+theme_override_font_sizes/font_size = 18
+text = "FREE PLAY"
+horizontal_alignment = 1
+
+[node name="Bamboo_Label" type="Sprite2D" parent="Control/Node2D/Freeplay"]
+z_index = 3
+position = Vector2(83.875, 116.563)
+scale = Vector2(0.423128, 0.362037)
+texture = ExtResource("4_7f5xp")
+
+[node name="Start_background" type="Sprite2D" parent="Control/Node2D"]
+z_index = -1
+position = Vector2(-62, -78.0001)
+scale = Vector2(0.662109, 0.40918)
+texture = ExtResource("5_dlyui")
+
+[node name="Character" type="Node2D" parent="Control/Node2D"]
+script = ExtResource("7_a6uha")
+
+[node name="Farmer" type="Sprite2D" parent="Control/Node2D/Character"]
+position = Vector2(508.5, 258)
+scale = Vector2(3.21875, 3.5)
+texture = ExtResource("8_s5fuu")
+hframes = 4
+vframes = 12
+
+[node name="Animated_Farmer" type="AnimatedSprite2D" parent="Control/Node2D/Character"]
+
+[node name="Label" type="Label" parent="Control/Node2D/Character"]
+visible = false
+z_index = 10
+offset_left = 462.0
+offset_top = 128.0
+offset_right = 550.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Hover Over
+Me"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Node2D/Character"]
+visible = false
+position = Vector2(508.5, 157.5)
+scale = Vector2(0.502778, 0.408333)
+texture = ExtResource("8_6pibi")
+
+[node name="Description" type="Button" parent="Control/Node2D"]
+z_index = -5
+offset_left = 469.0
+offset_top = 209.0
+offset_right = 549.0
+offset_bottom = 312.0
+script = ExtResource("3_2ii7b")
+
+[node name="Description_Label" type="Label" parent="Control/Node2D"]
+z_index = 30
+offset_left = 111.0
+offset_top = 20.0
+offset_right = 398.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "We all know that Pandas love bamboos, though what if one day a radioactive waste turned the bamboos evil? These bamboos began their savage raid on the human race, and gained vengeance for our harm to the world. Now in the world only a panda trainer remains. Help seek its panda friends through defeating waves of hungry bamboo mobs and navigate through puzzled rooms before it’s too late… "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Chat_Bubble" type="Sprite2D" parent="Control/Node2D"]
+z_index = 18
+position = Vector2(249, 129)
+rotation = -0.143856
+scale = Vector2(2.06631, 2.12345)
+texture = ExtResource("10_bbjpv")
+
+[node name="Title_Banner" type="Sprite2D" parent="Control/Node2D"]
+position = Vector2(278, 39)
+scale = Vector2(1.76083, 0.666667)
+texture = ExtResource("12_d4lj1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Node2D/Title_Banner"]
+visible = false
+position = Vector2(-1.29034, 0.982456)
+scale = Vector2(0.223244, 0.635425)
+texture = ExtResource("13_1ag3u")
+
+[node name="Label" type="Label" parent="Control/Node2D"]
+offset_left = 66.0
+offset_top = 8.0
+offset_right = 513.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.0509804, 0.239216, 0.152941, 1)
+theme_override_colors/font_shadow_color = Color(0.0196078, 0.0313726, 0.00392157, 0.74902)
+theme_override_fonts/font = ExtResource("14_vok77")
+theme_override_font_sizes/font_size = 60
+text = "BAMBOOBITES"
+
+[connection signal="mouse_entered" from="Control/Node2D/Story" to="Control/Node2D/Story" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Node2D/Story" to="Control/Node2D/Story" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/Node2D/Story" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Node2D/Story" to="Control/Node2D/Story" method="_on_pressed"]
+[connection signal="mouse_entered" from="Control/Node2D/Freeplay" to="Control/Node2D/Freeplay" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Node2D/Freeplay" to="Control/Node2D/Freeplay" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/Node2D/Freeplay" to="." method="_on_freeplay_pressed"]
+[connection signal="pressed" from="Control/Node2D/Freeplay" to="Control/Node2D/Freeplay" method="_on_pressed"]
 [connection signal="mouse_entered" from="Control/Node2D/Description" to="Control/Node2D/Description" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Control/Node2D/Description" to="Control/Node2D/Description" method="_on_mouse_exited"]

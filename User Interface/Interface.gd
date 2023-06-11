@@ -15,3 +15,7 @@ extends Control
 func _on_button_pressed():
 	$".".add_child(world.instantiate())
 	
+
+
+func _on_freeplay_pressed():
+	$".".add_child(world.instantiate())
