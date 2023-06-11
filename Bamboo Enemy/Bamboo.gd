@@ -18,6 +18,7 @@ func _physics_process(delta):
 		pass
 		#Deactive this bamboo
 	elif ATTACKING and not DEAD:
+		#Execute when the bamboo first reaches the player, and then every 1.5 seconds after.
 		_startCombat()
 	else:
 		findPlayer()
@@ -44,7 +45,4 @@ func _on_area_2d_body_exited(body):
 		
 func _startCombat():
 	pass
-	#for every 1second:
-	#player.takeDamage(DMG)
-	#player.playHurtAnimation()
-	#playAttackAnimation() 
+
