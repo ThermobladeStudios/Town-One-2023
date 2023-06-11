@@ -19,11 +19,13 @@ radius = 25.0
 script = ExtResource("1_3wwat")
 
 [node name="Dice" type="Label" parent="."]
-offset_left = 77.0
-offset_top = 74.0
-offset_right = 242.0
-offset_bottom = 100.0
-text = "dasdasdadsadasdsad"
+offset_left = 286.0
+offset_top = 166.0
+offset_right = 353.0
+offset_bottom = 192.0
+text = "Dice Roll"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("2_xdjys")
 
 [node name="TileMap" type="TileMap" parent="."]
