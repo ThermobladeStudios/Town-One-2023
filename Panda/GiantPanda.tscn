@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://jlxg0vl58ewg"]
 
-[ext_resource type="Script" path="res://Panda/Panda.gd" id="1_vkvqh"]
-[ext_resource type="Texture2D" uid="uid://biw0emxxqslvt" path="res://Assets/RedPanda.png" id="2_cdadt"]
+[ext_resource type="Script" path="res://Panda/GiantPanda.gd" id="1_ry2rc"]
+[ext_resource type="Texture2D" uid="uid://c6o24n5ttbu6l" path="res://Assets/GiantPanda.png" id="2_w51i5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohnp8"]
 size = Vector2(54, 43)
@@ -11,7 +11,7 @@ size = Vector2(36, 32.5)
 
 [sub_resource type="Animation" id="Animation_e2u6q"]
 resource_name = "Attack"
-length = 0.7
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -20,10 +20,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_ijfvt"]
@@ -55,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 8]
+"values": [6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_bdww6"]
@@ -72,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [10, 11, 12, 13]
+"values": [12, 13, 14, 15]
 }
 
 [sub_resource type="Animation" id="Animation_gss23"]
@@ -89,7 +89,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [15, 16, 17, 18]
+"values": [18, 19, 20, 21]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e6vmm"]
@@ -142,13 +142,15 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
-script = ExtResource("1_vkvqh")
+script = ExtResource("1_ry2rc")
+SPEED = 80
+attack = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(1.135, 1)
-texture = ExtResource("2_cdadt")
-hframes = 5
+texture = ExtResource("2_w51i5")
+hframes = 6
 vframes = 4
 frame = 5
 
@@ -182,14 +184,14 @@ tree_root = SubResource("AnimationNodeStateMachine_hnuuc")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_gq4v0")
-parameters/Walk/blend_position = Vector2(0, 0)
-
-[node name="Attack_cooldown" type="Timer" parent="."]
+parameters/Walk/blend_position = Vector2(-0.8224, 0.10917)
 
 [node name="attack_timer" type="Timer" parent="."]
+
+[node name="Attack_cooldown" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="TimerH" to="." method="_on_timer_h_timeout"]
-[connection signal="timeout" from="Attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
