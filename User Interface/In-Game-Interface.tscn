@@ -20,6 +20,7 @@ func _ready():
 func _process(delta):
 	#AttackCooldownSprite animation
 	thisSprite.frame = 4 - floor(cdTimer.time_left)
+	print(cdTimer.time_left)
 	
 	#Healthbar
 	thisProgressBar.value = progressBar.value
@@ -31,39 +32,36 @@ func _process(delta):
 layout_mode = 3
 anchor_right = 0.552
 anchor_bottom = 0.525
-offset_right = -0.280029
-offset_bottom = -1.52588e-05
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 7.71997
+offset_bottom = 3.99998
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_80612")
 
 [node name="HealthbarSprite" type="Sprite2D" parent="."]
-position = Vector2(210.142, 173.125)
-scale = Vector2(1.20793, 1.05859)
+position = Vector2(199.356, 9.27798)
+scale = Vector2(0.87905, 0.914936)
 texture = ExtResource("1_o76ud")
+offset = Vector2(55.742, 6.55783)
 
 [node name="AttackCooldownSprite" type="Sprite2D" parent="."]
-position = Vector2(364, 176)
-scale = Vector2(1.76786, 1.76786)
+position = Vector2(355, 17)
+scale = Vector2(1.7, 1.4909)
 texture = ExtResource("2_14cl0")
 hframes = 5
 frame = 4
 
 [node name="CharacterHealth" type="ProgressBar" parent="."]
-self_modulate = Color(0, 0.694118, 0.0941176, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0368272
-anchor_top = 0.015873
-anchor_right = 0.0963173
-anchor_bottom = 0.0347883
-offset_left = 177.0
-offset_top = 157.0
-offset_right = 296.0
-offset_bottom = 186.425
-scale = Vector2(1.00519, 1)
+modulate = Color(0.380392, 0.603922, 0, 1)
+self_modulate = Color(0.0941176, 0.690196, 0.0352941, 1)
+visibility_layer = 786449
+layout_mode = 0
+offset_left = 223.356
+offset_top = 2.27797
+offset_right = 310.356
+offset_bottom = 26.278
 max_value = 60.0
 value = 60.0
-rounded = true
 show_percentage = false
-metadata/_edit_use_anchors_ = true
