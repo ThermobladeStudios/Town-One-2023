@@ -8,6 +8,8 @@ size = Vector2(10, 22)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0yfr"]
 
 [node name="BambooBody" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_wrjdu")
 

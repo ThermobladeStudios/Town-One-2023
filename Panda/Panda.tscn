@@ -10,6 +10,8 @@ size = Vector2(40, 34)
 size = Vector2(33, 30.25)
 
 [node name="PandaBody" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_vkvqh")
 
@@ -25,6 +27,8 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ohnp8")

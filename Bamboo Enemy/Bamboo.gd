@@ -9,6 +9,7 @@ var ATTACKING = false
 
 @onready var player = get_parent().get_node("Player")
 @onready var bambooType = "Bamboo"
+@onready var world = player.get_parent()
 
 func get_Type():
 	return bambooType
@@ -34,8 +35,11 @@ func takeDamage(damage):
 	print("%s took %sdmg" % [self.name, damage])
 	print(HEALTH)
 	if HEALTH <= 0:
-		print("YOu fucking died")
+		print("You died")
 		DEAD = true
+		world.mob_count -= 1
+		if world.mob_count == 0:
+			world.max_reached = false
 		self.queue_free()
 
 func _on_area_2d_body_entered(body):

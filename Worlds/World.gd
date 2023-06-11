@@ -3,6 +3,7 @@ extends Node2D
 var enemy_1 = preload("res://Bamboo Enemy/Bamboo.tscn")
 var MAX_MOBS = 5
 var mob_count = 0
+var max_reached = false
 @onready var panda = []
 @onready var allpandas = preload("res://Panda/Panda.tscn")
 
@@ -34,7 +35,7 @@ func _on_timer_timeout():
 
 
 func _on_spawn_timer_timeout():
-	if (mob_count < MAX_MOBS):
+	if (mob_count < MAX_MOBS and !max_reached):
 		mob_count += 1
 		var enemy = enemy_1.instantiate()
 	
@@ -44,6 +45,8 @@ func _on_spawn_timer_timeout():
 			#enemy.position = Vector2(randf_range(-300,700), randf_range(-300,450))
 		
 		add_child(enemy)
+	if mob_count == MAX_MOBS:
+		max_reached = true
 		
 		
 	
