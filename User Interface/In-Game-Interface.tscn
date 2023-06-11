@@ -7,7 +7,9 @@
 script/source = "extends Control
 
 @onready var progressBar = get_node(\"/root/World/Player/ProgressBar\")
+@onready var cdTimer = get_node(\"/root/World/Player/CDTimer\")
 @onready var thisProgressBar = $CharacterHealth
+@onready var thisSprite = $AttackCooldownSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +18,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#AttackCooldownSprite animation
+	thisSprite.frame = 4 - floor(cdTimer.time_left)
+	
+	#Healthbar
 	thisProgressBar.value = progressBar.value
-	print(progressBar.value)
-	print(thisProgressBar.value)
 	if thisProgressBar.value <= 5.0: #The game stops before it factors in the last health deduction
 		thisProgressBar.value = 0 #So this manually applies the last deduction tick so it goes to 0
 "
@@ -43,6 +47,7 @@ position = Vector2(364, 176)
 scale = Vector2(1.76786, 1.76786)
 texture = ExtResource("2_14cl0")
 hframes = 5
+frame = 4
 
 [node name="CharacterHealth" type="ProgressBar" parent="."]
 self_modulate = Color(0, 0.694118, 0.0941176, 1)
