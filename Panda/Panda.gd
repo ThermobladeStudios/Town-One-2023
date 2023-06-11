@@ -8,20 +8,23 @@ var target = null
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var state = 0
 #0 is idle 1 is walking 2 is attacking
+var colliding = false
+var attackOnCd = false
+var target_bamboo = null
 
 func _physics_process(delta):
-	
+
 	var player_position = player.position
 	var distance_to_player = position.distance_to(player_position)
-	
+
 	if distance_to_player > player_radius:
 		# Player is outside the radius, so panda should follow player
 		target = player_position
 	else:
 		# Player is inside the radius, so panda should look for Bamboo
-		var bamboo_target = find_closest_bamboo()	
+		var bamboo_target = find_closest_bamboo()
 		if bamboo_target != null:
-			target = bamboo_target	
+			target = bamboo_target
 	pick_new_state()
 	if target != null:
 		var target_direction = (target - position).normalized()
@@ -31,6 +34,13 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 		move_and_slide()
+	if(colliding and !attackOnCd):
+		attackOnCd = true
+		$attack_timer.start(0.6)
+		state = 2
+		start_combat(target_bamboo)
+		pass
+
 func find_closest_bamboo():
 	var closest_bamboo = null
 	var closest_distance = INF
@@ -39,11 +49,11 @@ func find_closest_bamboo():
 			if distance < closest_distance:
 				closest_distance = distance
 				closest_bamboo = bamboo.position
-			
+
 	return closest_bamboo  # Return null if no bamboo is found
 
-	
-func update_animation_parameters(move_input : Vector2):	
+
+func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
 		animation_tree.set("parameters/Walk/blend_position", move_input)
 	elif(state == 2):
@@ -61,7 +71,6 @@ func pick_new_state():
 @export var attack = 10
 @export var attack_range = 50
 @onready var attack_area = $Area2D
-var target_bamboo = null
 var pandaType = "HighBodyFatPercentagePanda"
 
 func _ready():
@@ -69,35 +78,30 @@ func _ready():
 	attack_area.connect("body_exited", Callable(self, "_on_Bamboo_exited"))
 
 
-
-
-
-
 func start_combat(monster):
 	var attack = JsonData.CharacterData[pandaType]["Attack"]
-	$TimerH.wait_time = JsonData.CharacterData[pandaType]["CoolDown"]
+	#$TimerH.wait_time = JsonData.CharacterData[pandaType]["CoolDown"]
 	monster.takeDamage(attack)
-	$Attack_cooldown.start(2)
-	
+	#$Attack_cooldown.start(2)
 
-	
+
+
 func _on_area_2d_body_entered(body):
-	
 	if "BambooBody" in body.name:
-		target_bamboo = body.get_Type()
-		$attack_timer.start()
-		state = 2
-		start_combat(body)
-
-
-
+		colliding = true
+		target_bamboo = body
 
 
 func _on_attack_timer_timeout():
+	attackOnCd = false
 	state = 1
 	$attack_timer.stop()
 
 
-func _on_attack_cooldown_timeout():
-	target_bamboo = null
-	$Attack_cooldown.stop()
+#func _on_attack_cooldown_timeout():
+	#$Attack_cooldown.stop()
+
+
+func _on_area_2d_body_exited(body):
+	if "BambooBody" in body.name:
+		colliding = false
