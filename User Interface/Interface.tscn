@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://p2yg5c7o5145"]
+
+[ext_resource type="Script" path="res://User Interface/Interface.gd" id="1_2urpe"]
+[ext_resource type="Script" path="res://User Interface/Screen.gd" id="2_wdfjx"]
+[ext_resource type="Script" path="res://User Interface/Game Description.gd" id="3_2ii7b"]
+
+[sub_resource type="GDScript" id="GDScript_kqg7x"]
+script/source = "extends Button
+
+@onready var progressBar = get_parent().get_node(\"ProgressBar\")
+@onready var description = get_parent().get_node(\"Description\")
+
+func _ready():
+	progressBar.visible = false
+	connect(\"button_pressed\", Callable(self, \"_on_button_pressed\"))
+	progressBar.value = 100
+	text = \"Start Game!\"
+
+func showProgress():
+	visible = true
+
+
+func _on_pressed():
+	progressBar.visible = true
+	description.visible = false
+	hide()
+#	$Control/ProgressBar.visible = true
+
+
+"
+
+[node name="Game Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2urpe")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 44.0
+offset_right = 96.0
+offset_bottom = 84.0
+
+[node name="Node2D" type="Node2D" parent="Control"]
+script = ExtResource("2_wdfjx")
+
+[node name="Label" type="Label" parent="Control/Node2D"]
+offset_left = 107.0
+offset_top = 15.0
+offset_right = 392.0
+offset_bottom = 775.0
+theme_override_font_sizes/font_size = 15
+text = "We all know that Pandas love bamboos, though what if one day a radioactive waste turned the bamboos evil? These bamboos began their savage raid on the human race, and gained vengeance for our harm to the world. Now in the world only a panda trainer remains. Help seek its panda friends through defeating waves of hungry bamboo mobs and navigate through puzzled rooms before it’s too late… "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Control/Node2D"]
+offset_left = 148.0
+offset_top = 69.0
+offset_right = 348.0
+offset_bottom = 204.0
+script = SubResource("GDScript_kqg7x")
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/Node2D"]
+offset_left = -53.0
+offset_top = 281.0
+offset_right = 19.0
+offset_bottom = 311.0
+
+[node name="Description" type="Button" parent="Control/Node2D"]
+offset_left = 101.0
+offset_top = -39.0
+offset_right = 396.0
+offset_bottom = -6.0
+script = ExtResource("3_2ii7b")
+
+[connection signal="pressed" from="Control/Node2D/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Node2D/Button" to="Control/Node2D/Button" method="_on_pressed"]
+[connection signal="mouse_entered" from="Control/Node2D/Description" to="Control/Node2D/Description" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Node2D/Description" to="Control/Node2D/Description" method="_on_mouse_exited"]
