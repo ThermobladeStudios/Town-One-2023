@@ -144,6 +144,7 @@ collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_ry2rc")
 SPEED = 80
+attack = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -161,8 +162,8 @@ offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ohnp8")
@@ -183,11 +184,14 @@ tree_root = SubResource("AnimationNodeStateMachine_hnuuc")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_gq4v0")
-parameters/Walk/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(-0.8224, 0.10917)
 
 [node name="attack_timer" type="Timer" parent="."]
+
+[node name="Attack_cooldown" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="TimerH" to="." method="_on_timer_h_timeout"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

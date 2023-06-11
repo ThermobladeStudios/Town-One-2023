@@ -74,44 +74,14 @@ func _ready():
 
 
 func start_combat(monster):
-	print("Starting combat")
 	var attack = JsonData.CharacterData[pandaType]["Attack"]
-	print(attack)
 	$TimerH.wait_time = JsonData.CharacterData[pandaType]["CoolDown"]
 	monster.takeDamage(attack)
-	
-	
-#	show_attack()
-
-func stop_combat():
-	print("Stopping combat")
+	$Attack_cooldown.start(2)
 	
 
-
-@onready var attack_label = $AttackLabel
-@onready var attack_tween = get_tree().create_tween()
-
-func show_attack():
-	attack_label.text = "-%d hp" % attack
-	attack_label.show()
 	
-	print(attack_label)
-	print(attack_label.rect_position, attack_label.rect_position + Vector2(0, -50))  # should not be the same
-	print(attack_label.modulate, Color(0, 0, 0, 0))  # should not be the same
-
-
-	# Animate label to make it float upwards and disappear
-	attack_tween.interpolate_property(attack_label, "rect_position", attack_label.rect_position, attack_label.rect_position + Vector2(0, -50), 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	attack_tween.interpolate_property(attack_label, "modulate", attack_label.modulate, Color(0, 0, 0, 0), 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	attack_tween.start()
-#	await(attack_tween, "tween_completed")
-	attack_label.hide()
-	attack_label.rect_position = Vector2(0, 0)  # Reset label position
-
-
-
 func _on_area_2d_body_entered(body):
-	print(body.name)
 	
 	if "BambooBody" in body.name:
 		target_bamboo = body.get_Type()
@@ -120,13 +90,14 @@ func _on_area_2d_body_entered(body):
 		start_combat(body)
 
 
-func _on_area_2d_body_exited(body):
-		if body.name == target_bamboo:
-			target_bamboo = null
-			stop_combat()
 
 
 
 func _on_attack_timer_timeout():
 	state = 1
 	$attack_timer.stop()
+
+
+func _on_attack_cooldown_timeout():
+	target_bamboo = null
+	$Attack_cooldown.stop()
