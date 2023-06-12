@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Rooms/Rooms.gd" id="1_3wwat"]
 [ext_resource type="Script" path="res://Rooms/Dice.gd" id="2_xdjys"]
-[ext_resource type="TileSet" uid="uid://doqgyp07up1xt" path="res://Assets/TileMap/TileMap.tres" id="3_jfqn5"]
+[ext_resource type="TileSet" uid="uid://dme37rpnpm4" path="res://Assets/TileMap/TileMap.tres" id="3_jfqn5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fwy5"]
 radius = 25.0

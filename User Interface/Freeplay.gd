@@ -11,7 +11,8 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("button_pressed", Callable(self, "_on_button_pressed"))# Replace with function body.
+	pass
+	#connect("button_pressed", Callable(self, "_on_button_pressed"))# Replace with function body.
 
 
 

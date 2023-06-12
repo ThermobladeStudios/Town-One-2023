@@ -3,7 +3,7 @@
 		"Rarity": "Common",
 		"Health": 200,
 		"Attack": 30,
-		"Speed": 70
+		"Speed": 70,
 		"CoolDown": 15,
 		"Description": "A giant panda that attacks slowly with great force."
 	},
@@ -18,7 +18,7 @@
 	"Hero Panda": {
 		"Rarity": "Legendary",
 		"Attack": 50,
-		"Speed": 120
+		"Speed": 120,
 		"CoolDown": 5,
 		"Description": "100 push-ups! 100 sit-ups, 100 squats! Then a 10 Kilometer run!"
 	},

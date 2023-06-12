@@ -71,7 +71,7 @@ func pick_new_state():
 @export var attack = 10
 @export var attack_range = 50
 @onready var attack_area = $Area2D
-var pandaType = "HighBodyFatPercentagePanda"
+var pandaType = "Red Panda"
 
 func _ready():
 	attack_area.connect("body_entered", Callable(self, "_on_Bamboo_entered"))

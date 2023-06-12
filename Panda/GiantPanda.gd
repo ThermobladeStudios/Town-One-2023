@@ -62,7 +62,7 @@ func pick_new_state():
 @export var attack_range = 50
 @onready var attack_area = $Area2D
 var target_bamboo = null
-var pandaType = "HighBodyFatPercentagePanda"
+var pandaType = "Giant Panda"
 
 func _ready():
 	attack_area.connect("body_entered", Callable(self, "_on_Bamboo_entered"))
@@ -74,7 +74,7 @@ func _ready():
 
 
 func start_combat(monster):
-	var attack = JsonData.CharacterData[pandaType]["Attack"]
+	var attack = JsonData.CharacterData["Bamboo"]["Attack"]
 	$TimerH.wait_time = JsonData.CharacterData[pandaType]["CoolDown"]
 	monster.takeDamage(attack)
 	$Attack_cooldown.start(2)

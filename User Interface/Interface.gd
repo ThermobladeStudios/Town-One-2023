@@ -14,6 +14,7 @@ extends Control
 
 func _on_button_pressed():
 	$".".add_child(world.instantiate())
+	print($".")
 	
 
 
