@@ -81,7 +81,7 @@ func _ready():
 func start_combat(monster):
 	var attack = JsonData.CharacterData[pandaType]["Attack"]
 	#$TimerH.wait_time = JsonData.CharacterData[pandaType]["CoolDown"]
-	monster.takeDamage(attack)
+	monster.takeDamage(attack*3)
 	#$Attack_cooldown.start(2)
 
 

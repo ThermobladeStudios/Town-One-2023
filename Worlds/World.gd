@@ -3,23 +3,28 @@ extends Node2D
 var enemy_1 = preload("res://Bamboo Enemy/Bamboo.tscn")
 var RNG = RandomNumberGenerator.new()
 var MAX_MOBS = RNG.randi_range(3, 10)
+var MAX_WAVES = 2
 var mob_count = 0
 var max_reached = false
 var wave = 1
 @onready var panda = []
 @onready var allpandas = preload("res://Panda/Panda.tscn")
 
+var time = 0
+
 var i = 0
 func _process(delta):
 	$Wave_count.text ="Wave: "+ str(wave)
 	$Current_max_mobs.text = "Mobs this wave: " + str(MAX_MOBS)
+	if(wave == MAX_WAVES):
+		$"Panda Selection".visible = true
 func _ready():
 	$"Spawn Timer".start(0.5)
 	for x in 3:
 		panda.append(allpandas)
 		
 	
-	$Timer.start(5)
+	$Timer.start(2)
 
 func spawn_panda():
 	var pandy = panda[i].instantiate()
@@ -49,7 +54,11 @@ func _on_spawn_timer_timeout():
 		add_child(enemy)
 	if mob_count == MAX_MOBS:
 		max_reached = true
-		
-		
+		time+=1
+		if(time == 2):
+			time = 0
+			wave = 1
+			$"Spawn Timer".stop()
+	
 	
 	

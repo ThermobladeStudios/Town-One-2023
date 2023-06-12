@@ -78,11 +78,12 @@ func takeDamage(damage):
 	if HEALTH <= 0:
 		DEAD = true
 		world.mob_count -= 1
+		queue_free()
 		if world.mob_count == 0:
 			world.max_reached = false
 			world.wave += 1
 			world.MAX_MOBS = RNG.randi_range(3, 10)
-		queue_free()
+		
 
 	
 
