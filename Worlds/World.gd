@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy_1 = preload("res://Bamboo Enemy/Bamboo.tscn")
+var enemy_1 = [preload("res://Bamboo Enemy/Bamboo.tscn"),preload("res://Bamboo Enemy/BigBamboo.tscn")]
 var RNG = RandomNumberGenerator.new()
 var MAX_MOBS = RNG.randi_range(3, 10)
 var MAX_WAVES = 2
@@ -8,7 +8,7 @@ var mob_count = 0
 var max_reached = false
 var wave = 1
 @onready var panda = []
-@onready var allpandas = preload("res://Panda/Panda.tscn")
+@onready var allpandas = [preload("res://Panda/Panda.tscn"),preload("res://Panda/Panda.tscn"),preload("res://Panda/HeroPanda.tscn")]
 
 var time = 0
 
@@ -21,7 +21,7 @@ func _process(delta):
 func _ready():
 	$"Spawn Timer".start(0.5)
 	for x in 3:
-		panda.append(allpandas)
+		panda.append(allpandas[x])
 		
 	
 	$Timer.start(2)
@@ -45,7 +45,8 @@ func _on_timer_timeout():
 func _on_spawn_timer_timeout():
 	if (mob_count < MAX_MOBS and !max_reached):
 		mob_count += 1
-		var enemy = enemy_1.instantiate()
+		var rand = randi_range(0,100)
+		var enemy = enemy_1[rand%2].instantiate()
 	
 		enemy.position = Vector2(randi_range(58,565), randi_range(40,303))
 		#while enemy.position.x < 500 and enemy.position.x > -150 or enemy.position.y < 350 and enemy.position.y > -200:

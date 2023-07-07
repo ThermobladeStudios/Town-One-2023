@@ -17,8 +17,8 @@
 	},
 	"Hero Panda": {
 		"Rarity": "Legendary",
-		"Attack": 50,
-		"Speed": 120,
+		"Attack": 200,
+		"Speed": 200,
 		"CoolDown": 5,
 		"Description": "100 push-ups! 100 sit-ups, 100 squats! Then a 10 Kilometer run!"
 	},

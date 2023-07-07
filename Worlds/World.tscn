@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cit6safn6l6r8"]
+[gd_scene load_steps=9 format=3 uid="uid://cit6safn6l6r8"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_ahsee"]
 [ext_resource type="PackedScene" uid="uid://cv54o024g40la" path="res://Character/Character.tscn" id="1_bsm3k"]
-[ext_resource type="PackedScene" uid="uid://b4jlw47qbtm7h" path="res://Rooms/Rooms.tscn" id="4_24aw1"]
-[ext_resource type="PackedScene" uid="uid://jlxg0vl58ewg" path="res://Panda/Panda.tscn" id="5_acb4y"]
+[ext_resource type="PackedScene" uid="uid://be7e1aar1kqkm" path="res://Panda/HeroPanda.tscn" id="4_dc08r"]
 [ext_resource type="AudioStream" uid="uid://bbu2b1i72h3yl" path="res://Assets/Bamboo_Bytes_pt_2.mp3" id="5_l8c7a"]
 [ext_resource type="PackedScene" uid="uid://dqel1h2eambyf" path="res://User Interface/In-Game-Interface.tscn" id="6_rrmuu"]
+[ext_resource type="PackedScene" uid="uid://b4sp86lce8fst" path="res://Rooms/Room2.tscn" id="7_2ac5q"]
 [ext_resource type="PackedScene" uid="uid://blh6ckwjbtqvm" path="res://PandaSelection.tscn" id="7_rcg4x"]
+[ext_resource type="PackedScene" uid="uid://jlxg0vl58ewg" path="res://Panda/GiantPanda.tscn" id="9_f6h4j"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ahsee")
@@ -23,10 +24,13 @@ autostart = true
 
 [node name="Panda" type="Node" parent="."]
 
-[node name="PandaBody" parent="Panda" instance=ExtResource("5_acb4y")]
-position = Vector2(204, 178)
+[node name="PandaBody2" parent="Panda" instance=ExtResource("4_dc08r")]
+position = Vector2(268, 108)
 
-[node name="Room" parent="." instance=ExtResource("4_24aw1")]
+[node name="PandaBody4" parent="Panda" instance=ExtResource("9_f6h4j")]
+position = Vector2(329, 165)
+
+[node name="Room2" parent="." instance=ExtResource("7_2ac5q")]
 
 [node name="Wave_count" type="Label" parent="."]
 offset_left = 506.0

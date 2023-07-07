@@ -282,7 +282,8 @@ position = Vector2(508.5, 258)
 scale = Vector2(3.21875, 3.5)
 texture = ExtResource("8_s5fuu")
 hframes = 4
-vframes = 12
+vframes = 16
+frame = 33
 
 [node name="Animated_Farmer" type="AnimatedSprite2D" parent="Control/Node2D/Character"]
 
