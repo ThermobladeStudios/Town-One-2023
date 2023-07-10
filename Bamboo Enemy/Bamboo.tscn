@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Bamboo Enemy/Bamboo.gd" id="1_wrjdu"]
 [ext_resource type="Texture2D" uid="uid://cnmfmdkw4onbv" path="res://Assets/Bamboo1.png" id="2_5h1nq"]
+[ext_resource type="Script" path="res://Bamboo Enemy/NavigationAgent2D.gd" id="3_4sog5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tfrv"]
 size = Vector2(24, 31)
@@ -57,8 +58,6 @@ states/Walk/position = Vector2(452, 100)
 states/new_animation/node = SubResource("AnimationNodeAnimation_ofiig")
 states/new_animation/position = Vector2(283, 95)
 transitions = ["Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_nv7oi"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_i37q8"), "Start", "new_animation", SubResource("AnimationNodeStateMachineTransition_q3erd"), "new_animation", "Walk", SubResource("AnimationNodeStateMachineTransition_ju8vt")]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_wfgmy"]
 
 [sub_resource type="Animation" id="Animation_buper"]
 resource_name = "Attack"
@@ -176,6 +175,9 @@ collision_layer = 8
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_wrjdu")
+SPEED = null
+DMG = null
+HEALTH = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)
@@ -200,7 +202,6 @@ show_percentage = false
 tree_root = SubResource("AnimationNodeStateMachine_e2fry")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_wfgmy")
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -208,14 +209,17 @@ libraries = {
 "": SubResource("AnimationLibrary_7peo4")
 }
 
-[node name="Spawn" type="Timer" parent="."]
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_a1201")
 
-[connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+script = ExtResource("3_4sog5")
+
+[node name="Spawn" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]

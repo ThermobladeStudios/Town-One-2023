@@ -19,15 +19,23 @@ var knockbackTween
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var state = 0
 
+@onready var movement_target = player
+@onready var navigation_agent = $NavigationAgent2D
+var new_velocity : Vector2
 #0 is idle 1 is walking 2 is attacking
 
 func get_Type():
 	return bambooType
 
 func _ready():
+	
+	navigation_agent.path_desired_distance = 20.0
+	navigation_agent.target_desired_distance = 20.0
+	
 	$ProgressBar.max_value = HEALTH
 	player.on_knockback.connect(self.knockback_handler)
 	$Spawn.start(1)
+
 	
 func knockback_handler():
 	var player_position = player.position
@@ -36,11 +44,30 @@ func knockback_handler():
 
 func _process(delta):
 	$ProgressBar.value = HEALTH
+	
 
 func _physics_process(delta):
 	if(state != 0):
-		findPlayer()
 
+		
+		actor_setup()
+		if navigation_agent.is_navigation_finished():
+			return
+		
+		var current_agent_position: Vector2 = global_position
+		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
+		new_velocity = next_path_position - current_agent_position
+		new_velocity = new_velocity.normalized()
+		new_velocity = new_velocity.round()
+		
+		velocity = new_velocity*SPEED + knockback
+		update_animation_parameters(new_velocity)
+		pick_new_state()
+		move_and_slide()
+
+func actor_setup():
+	await get_tree().physics_frame
+	set_movement_target(movement_target.position)
 
 
 func update_animation_parameters(move_input : Vector2):	
@@ -55,16 +82,6 @@ func pick_new_state():
 		state_machine.travel("Attack")
 
 
-
-
-
-func findPlayer():
-	var player_position = player.position
-	var target_position = (player_position-position).normalized()
-	velocity = target_position*SPEED + knockback
-	update_animation_parameters(target_position)
-	pick_new_state()
-	move_and_slide()
 
 func _hit(knockback_strength: Vector2 = Vector2.ZERO, stop_time: float = 0.6):
 	if(knockback_strength != Vector2.ZERO):
