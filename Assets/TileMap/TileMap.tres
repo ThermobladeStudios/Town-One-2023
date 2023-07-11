@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=65 format=3 uid="uid://dme37rpnpm4"]
+[gd_resource type="TileSet" load_steps=67 format=3 uid="uid://dme37rpnpm4"]
 
 [ext_resource type="Texture2D" uid="uid://dnykuar4e02iw" path="res://Assets/TileMap/Tiles2.png" id="1_bcik7"]
 
@@ -105,6 +105,16 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mm5fa"]
+vertices = PackedVector2Array(0.125, -16, 16, -16, 16, 16, -0.125, 16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0.125, -16, 16, -16, 16, 16, -0.125, 16)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qh7p8"]
+vertices = PackedVector2Array(0.125, -16, 16, -16, 16, 16, -0.125, 16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0.125, -16, 16, -16, 16, 16, -0.125, 16)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sfr57"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -1372,6 +1382,7 @@ texture_region_size = Vector2i(32, 32)
 19:10/0 = 0
 19:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:10/0/physics_layer_0/angular_velocity = 0.0
+19:10/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mm5fa")
 20:10/0 = 0
 20:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:10/0/physics_layer_0/angular_velocity = 0.0
@@ -1726,6 +1737,7 @@ texture_region_size = Vector2i(32, 32)
 19:13/0 = 0
 19:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:13/0/physics_layer_0/angular_velocity = 0.0
+19:13/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_qh7p8")
 20:13/0 = 0
 20:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:13/0/physics_layer_0/angular_velocity = 0.0

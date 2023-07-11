@@ -42,17 +42,14 @@ func knockback_handler():
 	var target_position = (player_position-position).normalized()
 	_hit(target_position*KNOCKBACKSTRENGTH)
 
-func _process(delta):
-	$ProgressBar.value = HEALTH
 	
 
 func _physics_process(delta):
+	$ProgressBar.value = HEALTH
 	if(state != 0):
 
 		
 		actor_setup()
-		if navigation_agent.is_navigation_finished():
-			return
 		
 		var current_agent_position: Vector2 = global_position
 		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
@@ -68,7 +65,6 @@ func _physics_process(delta):
 func actor_setup():
 	await get_tree().physics_frame
 	set_movement_target(movement_target.position)
-
 
 func update_animation_parameters(move_input : Vector2):	
 	if(move_input != Vector2.ZERO):
