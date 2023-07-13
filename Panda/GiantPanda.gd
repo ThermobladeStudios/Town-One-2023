@@ -8,6 +8,9 @@ var target = null
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var state = 0
 #0 is idle 1 is walking 2 is attacking
+func _ready():
+	attack_area.connect("body_entered", Callable(self, "_on_Bamboo_entered"))
+	attack_area.connect("body_exited", Callable(self, "_on_Bamboo_exited"))
 
 func _physics_process(delta):
 	

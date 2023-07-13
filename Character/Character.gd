@@ -13,6 +13,7 @@ var state = 0
 
 func _ready():
 	$ProgressBar.max_value = health
+	state_machine.travel("Idle")
 
 func _process(delta):
 	$ProgressBar.value = health
