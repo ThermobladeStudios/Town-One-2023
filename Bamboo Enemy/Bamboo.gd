@@ -36,7 +36,6 @@ func _ready():
 	player.on_knockback.connect(self.knockback_handler)
 	$Spawn.start(1)
 
-	
 func knockback_handler():
 	var player_position = player.position
 	var target_position = (player_position-position).normalized()
@@ -65,6 +64,12 @@ func _physics_process(delta):
 func actor_setup():
 	await get_tree().physics_frame
 	set_movement_target(movement_target.position)
+
+
+func set_movement_target(target_point: Vector2):
+	navigation_agent.target_position = target_point
+
+
 
 func update_animation_parameters(move_input : Vector2):	
 	if(move_input != Vector2.ZERO):

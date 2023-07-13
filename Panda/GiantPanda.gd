@@ -64,10 +64,6 @@ func pick_new_state():
 var target_bamboo = null
 var pandaType = "Hero Panda"
 
-func _ready():
-	attack_area.connect("body_entered", Callable(self, "_on_Bamboo_entered"))
-	attack_area.connect("body_exited", Callable(self, "_on_Bamboo_exited"))
-
 
 
 
@@ -101,3 +97,7 @@ func _on_attack_timer_timeout():
 func _on_attack_cooldown_timeout():
 	target_bamboo = null
 	$Attack_cooldown.stop()
+
+
+func _on_area_2d_body_exited(body):
+	pass # Replace with function body.
